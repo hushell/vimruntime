@@ -14,7 +14,7 @@ bufexplorer https://github.com/corntrace/bufexplorer
 ctrlp.vim https://github.com/kien/ctrlp.vim
 nerdtree https://github.com/scrooloose/nerdtree
 snipmate-snippets https://github.com/scrooloose/snipmate-snippets
-tlib https://github.com/vim-scripts/tlib
+tlib_vim https://github.com/tomtom/tlib_vim
 vim-coffee-script https://github.com/kchmck/vim-coffee-script
 vim-indent-object https://github.com/michaeljsmith/vim-indent-object
 vim-markdown https://github.com/tpope/vim-markdown
