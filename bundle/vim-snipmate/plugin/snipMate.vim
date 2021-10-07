@@ -28,12 +28,14 @@ if (!exists('g:snipMateSources'))
   let g:snipMateSources['default'] = funcref#Function('snipMate#DefaultPool')
 endif
 
-au BufRead,BufNewFile *.snippet,*.snippets setlocal filetype=snippets
-au FileType snippets if expand('<afile>:e') =~# 'snippet$'
+augroup SnipMateDetect
+	au BufRead,BufNewFile *.snippet,*.snippets setlocal filetype=snippets
+	au FileType snippets if expand('<afile>:e') =~# 'snippet$'
 				\ | setlocal syntax=snippet
-			\ | else
-				\ | setlocal syntax=snippets
-			\ | endif
+				\ | else
+					\ | setlocal syntax=snippets
+					\ | endif
+augroup END
 
 inoremap <silent> <Plug>snipMateNextOrTrigger  <C-R>=snipMate#TriggerSnippet()<CR>
 snoremap <silent> <Plug>snipMateNextOrTrigger  <Esc>a<C-R>=snipMate#TriggerSnippet()<CR>
@@ -54,6 +56,10 @@ endif
 " SnipMate inserts this string when no snippet expansion can be done
 let g:snipMate['no_match_completion_feedkeys_chars'] =
 			\ get(g:snipMate, 'no_match_completion_feedkeys_chars', "\t")
+
+if !exists('g:snipMate.snippet_version')
+	echom 'The legacy SnipMate parser is deprecated. Please see :h SnipMate-deprecate.'
+endif
 
 " Add default scope aliases, without overriding user settings
 let g:snipMate.scope_aliases = get(g:snipMate, 'scope_aliases', {})
@@ -91,8 +97,7 @@ endif
 let g:snipMate['get_snippets'] = get(g:snipMate, 'get_snippets', funcref#Function("snipMate#GetSnippets"))
 
 " List of paths where snippets/ dirs are located
-let g:snipMate['snippet_dirs'] = get(g:snipMate, 'snippet_dirs', split(&rtp, ','))
-if type(g:snipMate['snippet_dirs']) != type([])
+if exists('g:snipMate.snippet_dirs') && type(g:snipMate['snippet_dirs']) != type([])
 	echohl WarningMsg
 	echom "g:snipMate['snippet_dirs'] must be a List"
 	echohl None
