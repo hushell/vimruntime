@@ -11,4 +11,6 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry' > ~/.vimrc
 
+mkdir ~/.vim_runtime/temp_dirs
+
 echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"

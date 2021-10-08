@@ -28,6 +28,7 @@ vim-repeat https://github.com/tpope/vim-repeat
 vim-gitgutter https://github.com/airblade/vim-gitgutter
 minibufexpl.vim https://github.com/fholgado/minibufexpl.vim
 EasyGrep https://github.com/vim-scripts/EasyGrep
+YouCompleteMe https://github.com/ycm-core/YouCompleteMe
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'
